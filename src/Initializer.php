@@ -19,10 +19,10 @@ class Initializer
      */
     protected $moduleInstances = [];
 
-    public function __construct($settings=array())
+    public function __construct($modules=array())
     {
         // build an class map of [[module => moduleClassPath], ..]
-        foreach ($settings['modules'] as $moduleName => $moduleClassName) {
+        foreach ($modules as $moduleName => $moduleClassName) {
             $module = new $moduleClassName();
         	if (! $module instanceof ModuleInterface) throw new \Exception($moduleName . ' is not an instance of ModuleInterface');
         	$this->moduleInstances[$moduleName] = $module;
